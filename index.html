@@ -11,13 +11,234 @@
 		<link rel="stylesheet" href="dist/theme/black.css">
 
 		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+			<link rel="stylesheet" href="plugin/highlight/monokai-sublime.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>Lodash library. Unique methods for working with data structures</section>
+				<section>Why I chose this topic</section>
+				<section>
+					<h4>Why Lodash?</h4>
+<p>Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc.
+Lodash’s modular methods are great for:</p>
+<ul>
+<li> Iterating arrays, objects, & strings</li>
+<li>Manipulating & testing values</li>
+<li>Creating composite functions</li>
+</ul>
+<aside class="notes">
+	<p> - This is the quotation from the documentation;</p>
+
+<p>- Function composition is an approach where the result of one function is passed on to the next function, which is passed to another until the final function is executed for the final result.</p>
+</aside>
+				</section>
+				<section>
+					<section>
+						Goal: create an array of elements split into groups the length of size.
+
+					</section>
+					<section>
+						My JS Implementation
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+function myChunk(arr, size = 1) {
+	const output = [];
+	for (let i = 0; i &lt; arr.length; i += size ){
+		let arrayChunk = arr.slice(i, i + size);
+		output.push(arrayChunk);
+	}
+	return output;
+}
+
+myChunk(['a', 'b', 'c', 'd', 'e', 'f'], 2);
+//--> [ [ 'a', 'b' ], [ 'c', 'd' ], [ 'e', 'f' ] ]
+
+myChunk(['a', 'b', 'c', 'd', 'e'], 3);
+//--> [ [ 'a', 'b', 'c' ], [ 'd', 'e' ] ]
+						</code></pre>
+					</section>
+					<section>
+						Lodash Method
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+
+	_.chunk(['a', 'b', 'c', 'd', 'e', 'f'], 2);
+//-->[ [ 'a', 'b' ], [ 'c', 'd' ] ]
+
+	_.chunk(['a', 'b', 'c', 'd', 'e'], 3);
+//-->[ [ 'a', 'b', 'c' ], [ 'd', 'e' ] ]
+	</code></pre>
+					</section>
+
+				</section>
+
+				<section>
+					<section>Goal: make an array from given with all falsy values removed</section>
+					<section>
+						My JS Implementation
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+							function myCompact(arr) {
+								const output = [];
+								arr.forEach(element => {
+									if (element) {
+										output.push(element)
+									}
+								});
+								return output;
+							}
+							myCompact([0, 1, false, 2, '', 3, NaN, null, undefined]);
+							//--> [ 1, 2, 3 ]
+							</code></pre>
+					</section>
+					<section>
+						Lodash Method
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+_.compact([0, 1, false, 2, '', 3, NaN, null, undefined]);
+
+//--> [ 1, 2, 3 ]
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>Goal: find common values in two arrays and return new array with these values</section>
+					<section>
+						My JS Implementation
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+							function myIntersection(arr1, arr2) {
+								return arr1.filter(x => arr2.includes(x));
+							}
+
+							let a = {b: 1}
+							let b = a
+
+							myIntersection([2, 1], [2, 3]);
+							//--> [2]
+							myIntersection([5, 2, 1, 4], [2, 3, 4, 5]);
+							//--> [ 5, 2, 4 ]
+							myIntersection([a], [b]);
+							//-->[ { b: 1 } ]
+						</code></pre>
+					</section>
+					<section>
+						Lodash Method
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+let a = {b: 1}
+let b = a
+
+_.intersection([2, 1], [2, 3]);
+//--> [2]
+_.intersection([5, 2, 1, 4], [2, 3, 4, 5]);
+//--> [ 5, 2, 4 ]
+_.intersection([a], [b]);
+//-->[ { b: 1 } ]
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>Goal: get the size of given collection</section>
+					<section>
+						My JS Implementation
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+							function mySize(collection) {
+								if (!Array.isArray(collection)) {
+									return Object.keys(collection).length
+								} else {
+									return collection.length
+								}
+							}
+
+							mySize([1, 2, 3]);
+							//--> 3
+							mySize({ 'a': 1, 'b': 2 });
+							//--> 2
+							mySize('pebbles');
+							//--> 7
+						</code></pre>
+					</section>
+					<section>
+						Lodash Method
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+_.size([1, 2, 3]);
+//--> 3
+
+_.size({ 'a': 1, 'b': 2 });
+//--> 2
+
+_.size('pebbles');
+//--> 7
+						</code></pre>
+						<aside class="notes">
+							Map and Set are not iterable so you can't use this method for them.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section><h4 style="text-transform: lowercase">Methods: _.to<span style="text-transform: capitalize">Pairs</span>(object) and _.from<span style="text-transform: capitalize">Pairs</span>(array)</h4>
+						<aside class="notes">
+							fromPairs: Creates an array of own enumerable string keyed-value pairs for object which can be consumed by _.fromPairs. If object is a map or set, its entries are returned.
+
+							toPairs: This method returns an object composed from key-value pairs.
+						</aside>
+						</section>
+					<section>
+						My fromPairs:
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+							function myFromPairs(arr) {
+								let output = {};
+								arr.forEach(element => {
+									output[element[0]] = element[1];
+								})
+								return output
+							}
+
+							(myFromPairs([['a', 1], ['b', 2], ['c', 3]]));
+							// --> { a: 1, b: 2, c: 3 }
+						</code></pre>
+					</section>
+					<section>
+						My toPairs:
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+							function myToPairs(obj) {
+								let output = [];
+								for (prop in obj) {
+									if (!obj.hasOwnProperty(prop)) continue;
+									output.push([prop, obj[prop]]);
+								}
+								return output;
+							}
+							function Foo() {
+								this.a = 1;
+								this.b = 2;
+							}
+							Foo.prototype.c = 3;
+							myToPairs(new Foo); // --> [['a', 1], ['b', 2]]
+						</code></pre>
+					</section>
+					<section>
+						Lodash Method
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+// from pairs
+_.fromPairs([['a', 1], ['b', 2], ['c', 3]]);
+// --> { a: 1, b: 2, c: 3 }
+
+// to pairs
+function Foo() {
+  this.a = 1;
+  this.b = 2;
+}
+Foo.prototype.c = 3;
+
+console.log(_.toPairs(new Foo));
+// --> [['a', 1], ['b', 2]] (iteration order is not guaranteed)
+						</code></pre>
+						<aside class="notes">
+								If we want to create an array of own and inherited properties, we can use _.toPairsIn(object)
+						</aside>
+					</section>
+
+				</section>
 			</div>
 		</div>
 
