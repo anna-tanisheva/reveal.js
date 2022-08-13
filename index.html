@@ -86,6 +86,7 @@
 				</section>
 				<section>
 					<section>
+						<h3>Chunk Method</h3>
 						Goal: create an array of elements split into groups the length of size.
 
 					</section>
@@ -123,7 +124,9 @@ myChunk(['a', 'b', 'c', 'd', 'e'], 3);
 				</section>
 
 				<section>
-					<section>Goal: make an array from given with all falsy values removed</section>
+					<section>
+						<h4>Compact Method</h4>
+						Goal: make an array from given with all falsy values removed</section>
 					<section>
 						My JS Implementation
 						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
@@ -151,7 +154,10 @@ _.compact([0, 1, false, 2, '', 3, NaN, null, undefined]);
 				</section>
 
 				<section>
-					<section>Goal: find common values in two arrays and return new array with these values</section>
+					<section>
+						<h4>Intersection Method</h4>
+
+						Goal: find common values in two arrays and return new array with these values</section>
 					<section>
 						My JS Implementation
 						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
@@ -187,7 +193,9 @@ _.intersection([a], [b]);
 				</section>
 
 				<section>
-					<section>Goal: get the size of given collection</section>
+					<section>
+						<h4>Size</h4>
+						Goal: get the size of given collection</section>
 					<section>
 						My JS Implementation
 						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
@@ -281,14 +289,19 @@ function Foo() {
 }
 Foo.prototype.c = 3;
 
-console.log(_.toPairs(new Foo));
-// --> [['a', 1], ['b', 2]] (iteration order is not guaranteed)
+_.toPairs(new Foo);
+// --> [['a', 1], ['b', 2]]
 						</code></pre>
 						<aside class="notes">
-								If we want to create an array of own and inherited properties, we can use _.toPairsIn(object)
+								- If we want to create an array of own and inherited properties, we can use _.toPairsIn(object)
+								- iteration order is not guaranteed
 						</aside>
 					</section>
 
+				</section>
+				<section>
+					<p>Thank you for your attention!</p>
+					<img style="width: 40%" src="./examples/assets/doggo.jpg" alt="">
 				</section>
 			</div>
 		</div>
