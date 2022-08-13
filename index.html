@@ -4,34 +4,85 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Lodash Library</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/black.css">
 
 		<!-- Theme used for syntax highlighted code -->
-			<link rel="stylesheet" href="plugin/highlight/monokai-sublime.css">
+			<link rel="stylesheet" href="plugin/highlight/monokai.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Lodash library. Unique methods for working with data structures</section>
-				<section>Why I chose this topic</section>
+				<section>Lodash library. Common overview</section>
+				<section>
+					<p> Why did I choose this topic</p>
+					<aside class="notes">
+						<p> - See mentions of this library here and there;</p>
+
+					<p>- Out of curiosity so I have time to discover this library</p>
+					</aside>
+				</section>
 				<section>
 					<h4>Why Lodash?</h4>
-<p>Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc.
-Lodash’s modular methods are great for:</p>
-<ul>
-<li> Iterating arrays, objects, & strings</li>
-<li>Manipulating & testing values</li>
-<li>Creating composite functions</li>
-</ul>
-<aside class="notes">
-	<p> - This is the quotation from the documentation;</p>
+					<p>Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc.
+					Lodash’s modular methods are great for:</p>
+					<ul>
+					<li> Iterating arrays, objects, & strings</li>
+					<li>Manipulating & testing values</li>
+					<li>Creating composite functions</li>
+					</ul>
+					<aside class="notes">
+						<p> - This is the quotation from the documentation;</p>
 
-<p>- Function composition is an approach where the result of one function is passed on to the next function, which is passed to another until the final function is executed for the final result.</p>
-</aside>
+						<p>- Function composition is an approach where the result of one function is passed on to the next function, which is passed to another until the final function is executed for the final result.</p>
+						<p>- Lodash allows to developers write less complex code which is easier to maintain</p>
+					</aside>
+				</section>
+
+				<section>
+					<section>To install this library:</section>
+					<section>
+						<p>	1. You can insert tag script with lodash as source to your html file.</p>
+							<img src="./examples/assets/1.JPG" alt="script-tag">
+					</section>
+					<section>
+						<p>	2. Using npm.</p>
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+							$ npm i -g npm
+							$ npm i --save lodash
+						</code></pre>
+						<aside class="notes">
+							<p> - First line - installs npm globally</p>
+							<p>- Second installs lodash to your project</p>
+						</aside>
+					</section>
+					<section>
+						<p>	3. In Node.js.</p>
+						<pre><code data-trim data-noescape data-line-numbers data-ln-start-from="1">
+							// Load the full build.
+							var _ = require('lodash');
+							// Load the core build.
+							var _ = require('lodash/core');
+							// Load the FP build for immutable auto-curried
+							iteratee-first data-last methods.
+							var fp = require('lodash/fp');
+
+							// Load method categories.
+							var array = require('lodash/array');
+							var object = require('lodash/fp/object');
+
+							// Cherry-pick methods for smaller
+							browserify/rollup/webpack bundles.
+							var at = require('lodash/at');
+							var curryN = require('lodash/fp/curryN');
+						</code></pre>
+						<aside class="notes">
+							<p>The core build is a fraction of the size and just contains the utils most likely to be needed.</p>
+						</aside>
+					</section>
 				</section>
 				<section>
 					<section>
